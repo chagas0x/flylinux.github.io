@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fly Linux Distribution</title>
+  <meta name="description" content="Fly Linux: uma distro leve, rápida e pronta para voar em qualquer máquina." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root { --brandA:#0ea5e9; --brandB:#2563eb; --ink:#0b1220; }
+    html { scroll-behavior: smooth; }
+    body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; color: #0f172a; }
+    /* Header on scroll */
+    .nav-glass { backdrop-filter: blur(8px); background: rgba(255,255,255,.55); }
+    /* Anchor offset for sticky nav */
+    section { scroll-margin-top: 92px; }
+    /* Simple reveal animations */
+    [data-animate] { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+    [data-animate].show { opacity: 1; transform: translateY(0); }
+    /* Gradient text */
+    .grad-text { background: linear-gradient(90deg, var(--brandA), var(--brandB)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    /* Code blocks */
+    pre { position: relative; }
+    .copy-btn { position:absolute; top:.5rem; right:.5rem; font-size:.75rem; }
+    /* Back to top */
+    #toTop { opacity:0; pointer-events:none; transition: opacity .3s ease; }
+    #toTop.show { opacity:1; pointer-events:auto; }
+  </style>
+</head>
+<body class="bg-white">
+  <!-- Header -->
+  <header id="siteHeader" class="fixed inset-x-0 top-0 z-50 border-b border-slate-200/60 transition-colors">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
+      <a href="#home" class="flex items-center gap-3">
+        <span class="text-xl font-extrabold blue-text">Fly Linux</span>
+      </a>
+      <button id="menuBtn" class="lg:hidden rounded-xl border px-3 py-2 text-sm font-medium hover:bg-slate-50">Menu</button>
+      <ul id="navLinks" class="hidden w-full flex-col gap-2 lg:flex lg:w-auto lg:flex-row lg:items-center lg:gap-6">
+        <li><a href="#home" class="nav-link text-sm font-medium text-slate-600 hover:text-slate-900">Início</a></li>
+        <li><a href="#features" class="nav-link text-sm font-medium text-slate-600 hover:text-slate-900">Recursos</a></li>
+        <li><a href="#download" class="nav-link text-sm font-medium text-slate-600 hover:text-slate-900">Download</a></li>
+        <li><a href="#docs" class="nav-link text-sm font-medium text-slate-600 hover:text-slate-900">Docs</a></li>
+        <li><a href="#community" class="nav-link text-sm font-medium text-slate-600 hover:text-slate-900">Comunidade</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section id="home" class="relative overflow-hidden pt-28 sm:pt-32">
+    <div class="absolute inset-0 -z-10 bg-gradient-to-br from-sky-100 via-white to-indigo-50"></div>
+    <div class="pointer-events-none absolute inset-x-0 top-[-200px] -z-10 h-[420px] bg-[radial-gradient(40%_60%_at_50%_40%,rgba(14,165,233,.25),rgba(255,255,255,0))]"></div>
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid items-center gap-10 lg:grid-cols-2">
+        <div data-animate>
+          <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl">
+          Fly Linux Distro</span>
+          </h1>
+          <p class="mt-4 text-lg text-slate-600">Fly Linux Distro é uma distro minimalista com inicialização rápida baseada em Arch Linux, consumo baixíssimo de RAM e um ecossistema simples para você construir do seu jeito.</p>
+          <div class="mt-8 flex flex-wrap items-center gap-3">
+            <a href="#download" class="rounded-xl bg-gradient-to-r from-sky-500 to-indigo-600 px-5 py-3 text-sm font-semibold text-white shadow-md transition hover:brightness-105 focus:outline-none focus:ring-4 focus:ring-sky-300">Download ISO</a>
+            <a href="#docs" class="rounded-xl border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-800 shadow-sm hover:bg-slate-50">Documentação</a>
+          </div>
+          <br>
+        </div>
+        <div class="relative" data-animate>
+          <div class="absolute -inset-6 -z-10 rounded-3xl bg-gradient-to-tr from-sky-200 via-white to-indigo-200 blur-2xl"></div>
+          <div class="rounded-3xl border border-slate-200 bg-white p-2 shadow-xl">
+            <div class="aspect-video w-full overflow-hidden rounded-2xl bg-slate-900/95">
+              <!-- Terminal mockup -->
+              <pre class="m-0 overflow-auto px-4 pb-6 text-[13px] leading-relaxed text-slate-100"><code>
+└> sudo pacman -Syu
+:: Synchronizing package databases...
+ core is up to date
+ extra is up to date
+ multilib is up to date
+:: Starting full system upgrade...
+ there is nothing to do
+</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto mb-10 max-w-2xl text-center" data-animate>
+        <h2 class="text-3xl font-extrabold tracking-tight">Por que escolher Fly Linux</span>?</h2>
+      </div>
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <!-- Card -->
+        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm" data-animate>
+          <h3 class="text-lg font-semibold">Inicialização rápida</h3>
+          <p class="mt-2 text-slate-600">O Fly Linux foi pensado para inicializar depressa. Serviços sob demanda e carregamento inteligente garantem que você chegue ao jogo quase instantaneamente.</p>
+        </div>
+        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm" data-animate>
+          <h3 class="text-lg font-semibold">Leve de verdade</h3>
+          <p class="mt-2 text-slate-600">ISO enxuta e serviços essenciais, consumindo pouca RAM mesmo em live mode.</p>
+        </div>
+        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm" data-animate>
+          <h3 class="text-lg font-semibold">Aplicativos oficiais</h3>
+          <p class="mt-2 text-slate-600">Apenas aplicativos oficiais instalados, mas com toda liberdade no uso de outros gerenciadores de pacotes.</p>
+        </div>
+        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm" data-animate>
+          <h3 class="text-lg font-semibold">Sempre atualizado</h3>
+          <p class="mt-2 text-slate-600">Sempre atualizado, o Fly Linux entrega segurança, estabilidade e as últimas novidades do mundo open source.</p>
+        </div>
+        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm" data-animate>
+          <h3 class="text-lg font-semibold">Unix-Like + Kiss</h3>
+          <p class="mt-2 text-slate-600">O Fly Linux segue a filosofia Unix-Like: simples, direto e modular. Aplicamos o princípio KISS — menos complexidade, mais eficiência.</p>
+        </div>
+        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm" data-animate>
+          <h3 class="text-lg font-semibold">Agilidade</h3>
+          <p class="mt-2 text-slate-600">O Fly Linux foi desenhado para ser ágil em cada detalhe. Desde o boot otimizado até a abertura de aplicativos, tudo acontece de forma leve, rápida e fluida, sem travas e sem desperdício de recursos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Download -->
+  <section id="download" class="py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid gap-10 lg:grid-cols-2">
+        <div data-animate>
+          <h2 class="text-3xl font-extrabold tracking-tight">Download</h2>
+          <p class="mt-3 text-slate-600">Escolha a imagem ISO e grave em um pendrive.</p>
+          <div class="mt-6 grid gap-4 sm:grid-cols-2">
+            <div class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+              <h3 class="text-lg font-semibold">x86_64 • GNOME • Desktop</h3>
+              <p class="mt-1 text-sm text-slate-600">GNOME/Wayland, drivers básicos.</p>
+              <a href="#" class="mt-4 inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-sky-500 to-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow hover:brightness-105">Baixar ISO</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Docs -->
+  <section id="docs" class="bg-slate-50 py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto mb-10 max-w-2xl text-center" data-animate>
+        <h2 class="text-3xl font-extrabold tracking-tight">Por onde começar?</h2>
+        <p class="mt-3 text-slate-600">Passos rápidos para começar e links para guias completos.</p>
+      </div>
+      <div class="grid gap-6 lg:grid-cols-2">
+        <div class="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm" data-animate>
+          <img src="fly.png" alt="Descrição da imagem">
+        </div>
+        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm" data-animate>
+          <h3 class="text-lg font-semibold">Perguntas frequentes</h3>
+          <details class="mt-3 rounded-xl border border-slate-200 p-4 open:shadow-sm">
+            <summary class="cursor-pointer font-medium">Quais desktops estão disponíveis?</summary>
+            <p class="mt-2 text-slate-600">Inicialmente GNOME, Xfce em breve.</p>
+          </details>
+          <details class="mt-3 rounded-xl border border-slate-200 p-4 open:shadow-sm">
+            <summary class="cursor-pointer font-medium">Como reportar um bug?</summary>
+            <p class="mt-2 text-slate-600">Abra uma issue no Git com logs e passos para reproduzir.</p>
+          </details>
+          <details class="mt-3 rounded-xl border border-slate-200 p-4 open:shadow-sm">
+            <summary class="cursor-pointer font-medium">Qual o ciclo de releases?</summary>
+            <p class="mt-2 text-slate-600">Snapshots mensais</p>
+          </details>
+          <details class="mt-3 rounded-xl border border-slate-200 p-4 open:shadow-sm">
+            <summary class="cursor-pointer font-medium">Por que Fly Linux?</summary>
+            <p class="mt-2 text-slate-600">Fly é uma referência conceitual a asas, leveza e velocidade.</p>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Community -->
+  <section id="community" class="py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto mb-10 max-w-2xl text-center" data-animate>
+        <h2 class="text-3xl font-extrabold tracking-tight">Junte-se à comunidade</h2>
+        <p class="mt-3 text-slate-600">Participe, contribua e ajude a distro a voar mais alto.</p>
+      </div>
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <a href="https://t.me/flylinux" class="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:shadow-md" data-animate>
+          <h3 class="font-semibold">Chat Telegram</h3>
+          <p class="mt-1 text-slate-600">Tire dúvidas e converse em tempo real.</p>
+          <span class="mt-3 inline-block text-sm font-semibold text-sky-700 group-hover:underline">Entrar no chat →</span>
+        </a>
+        <a href="https://github.com/chagas0x/Fly-Linux-Distribution" class="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:shadow-md" data-animate>
+          <h3 class="font-semibold">Repositório</h3>
+          <p class="mt-1 text-slate-600">Abra issues</p>
+          <span class="mt-3 inline-block text-sm font-semibold text-sky-700 group-hover:underline">Visitar repositório →</span>
+        </a>
+        <a href="" class="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:shadow-md" data-animate>
+          <h3 class="font-semibold">Documentação (Em breve)</h3>
+          <p class="mt-1 text-slate-600">Tutoriais e dicas.</p>
+          <span class="mt-3 inline-block text-sm font-semibold text-sky-700 group-hover:underline">Visitar Wiki →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-200 bg-white py-10">
+    <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-4 sm:flex-row sm:px-6 lg:px-8">
+      <p class="text-sm text-slate-500">© <span id="year"></span> Fly Linux. Feito com ♥ para a comunidade.</p>
+      <a href="#home" class="text-sm font-semibold text-slate-600 hover:text-slate-900">Voltar ao topo ↑</a>
+    </div>
+  </footer>
+
+  <!-- Back to top floating button -->
+  <button id="toTop" aria-label="Voltar ao topo" class="fixed bottom-6 right-6 z-40 rounded-full border border-slate-300 bg-white/90 p-3 shadow-lg transition hover:bg-white">↑</button>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    menuBtn?.addEventListener('click', () => navLinks.classList.toggle('hidden'));
+
+    // Header glass on scroll
+    const header = document.getElementById('siteHeader');
+    function onScrollHeader(){ header.classList.toggle('nav-glass', window.scrollY > 6); }
+    onScrollHeader();
+    window.addEventListener('scroll', onScrollHeader);
+
+    // Intersection Observer for reveal + active nav link
+    const sections = document.querySelectorAll('section');
+    const links = document.querySelectorAll('.nav-link');
+    const toTop = document.getElementById('toTop');
+
+    const revealObs = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add('show'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('[data-animate]').forEach(el => revealObs.observe(el));
+
+    const activeObs = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          links.forEach(l => l.classList.remove('text-slate-900'));
+          const id = entry.target.getAttribute('id');
+          const active = document.querySelector(`a[href="#${id}"]`);
+          active?.classList.add('text-slate-900');
+        }
+      });
+    }, { threshold: 0.6 });
+    sections.forEach(s => activeObs.observe(s));
+
+    // Back to top visibility + behavior
+    function onScrollTopBtn(){ toTop.classList.toggle('show', window.scrollY > 700); }
+    onScrollTopBtn();
+    window.addEventListener('scroll', onScrollTopBtn);
+    toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // Copy buttons in code blocks
+    document.querySelectorAll('[data-copy]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const code = btn.parentElement.querySelector('code').innerText;
+        navigator.clipboard.writeText(code).then(() => {
+          const txt = btn.textContent;
+          btn.textContent = 'Copiado!';
+          setTimeout(() => btn.textContent = txt, 1200);
+        });
+      });
+    });
+  </script>
+</body>
+</html>
