@@ -1,0 +1,525 @@
+<!-- fly linux distribution -->
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fly Linux — leve, rápido e seguro</title>
+  <meta name="description" content="Fly Linux — distribuição Linux leve, rápida e segura. Faça o download, veja recursos, instalação, documentação e junte-se à comunidade." />
+  <meta name="theme-color" content="#0a1a2b" />
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="Fly Linux — leve, rápido e seguro" />
+  <meta property="og:description" content="Distribuição Linux com foco em desempenho, segurança e simplicidade." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='630'%3E%3Crect width='100%25' height='100%25' fill='%230a1a2b'/%3E%3Ctext x='50%25' y='50%25' fill='%23e6f0ff' font-family='Arial,Helvetica,sans-serif' font-size='72' text-anchor='middle' dominant-baseline='middle'%3EFly Linux%3C/text%3E%3C/svg%3E" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230a1a2b'/%3E%3Cpath d='M10 34l20-6 8-18 6 16 10 4-20 6-8 18-6-16z' fill='%2300e5ff'/%3E%3C/svg%3E" />
+  <style>
+    :root{
+      --navy:#0a1a2b;        /* fundo principal */
+      --navy-2:#0e2439;      /* painéis */
+      --navy-3:#0c2032;      /* cabeçalho */
+      --accent:#00e5ff;      /* ciano */
+      --accent-2:#7fffd4;    /* água-marinha */
+      --text:#e6f0ff;        /* texto principal */
+      --muted:#a7b3c7;       /* texto secundário */
+      --glass:rgba(14,36,57,.55);
+      --radius:18px;
+      --maxw:1200px;
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; color:var(--text); background:radial-gradient(1200px 800px at 80% -10%, #143250 0%, transparent 60%), radial-gradient(900px 700px at -10% 30%, #102b45 0%, transparent 60%), var(--navy);
+      font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, sans-serif;
+      overflow-x:hidden;
+    }
+    a{color:var(--accent); text-decoration:none}
+    a:hover{opacity:.9}
+    .container{max-width:var(--maxw); margin-inline:auto; padding:0 24px}
+    .btn{display:inline-flex; align-items:center; gap:.6rem; padding:.85rem 1.2rem; border-radius:12px; border:1px solid rgba(255,255,255,.1); background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); box-shadow:var(--shadow); color:var(--text); font-weight:600}
+    .btn-primary{background:linear-gradient(180deg, var(--accent), #11cfe0); color:#042028; border:none}
+    .btn-ghost{background:transparent}
+    .chip{display:inline-block; padding:.25rem .6rem; border:1px solid rgba(255,255,255,.18); border-radius:999px; font-size:.8rem; color:var(--muted)}
+
+    /* Cabeçalho */
+    header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(14px); background:linear-gradient(180deg, rgba(10,26,43,.92), rgba(10,26,43,.6)); border-bottom:1px solid rgba(255,255,255,.08)}
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:1rem; min-height:64px}
+    .brand{display:flex; align-items:center; gap:.75rem; font-weight:800; letter-spacing:.2px}
+    .brand svg{flex:0 0 auto; filter:drop-shadow(0 6px 18px rgba(0,229,255,.35))}
+    nav ul{display:flex; gap:1rem; list-style:none; margin:0; padding:0}
+    nav a{padding:.6rem .8rem; border-radius:10px; color:var(--text)}
+    nav a.active, nav a:focus-visible{outline:none; background:rgba(255,255,255,.06)}
+
+    /* Hero */
+    .hero{position:relative; padding:96px 0 56px}
+    .hero-grid{display:grid; grid-template-columns:1.2fr .8fr; gap:40px; align-items:center}
+    .hero h1{font-size:clamp(2.2rem, 4vw, 3.8rem); line-height:1.15; margin:.2rem 0 .6rem}
+    .hero p.lead{font-size:1.2rem; color:var(--muted); margin:0 0 1.2rem}
+    .badge-row{display:flex; flex-wrap:wrap; gap:.6rem}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.09); border-radius:var(--radius); box-shadow:var(--shadow)}
+    .hero .panel{padding:22px}
+
+    .specs{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:14px}
+    .specs .spec{padding:14px 16px; background:rgba(255,255,255,.04); border-radius:14px; border:1px solid rgba(255,255,255,.06)}
+
+    /* Seções genéricas */
+    section{padding:72px 0}
+    .section-title{font-size:1.8rem; margin:0 0 10px}
+    .section-sub{color:var(--muted); margin:0 0 28px}
+
+    /* Recursos */
+    .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:22px}
+    .feature{padding:22px}
+    .feature h3{margin:8px 0 6px}
+    .feature p{color:var(--muted)}
+
+    /* Edições */
+    .editions{display:grid; grid-template-columns:repeat(3,1fr); gap:22px}
+    .edition{padding:22px; display:flex; flex-direction:column; gap:12px}
+    .edition ul{margin:0; padding-left:18px; color:var(--muted)}
+
+    /* Screenshots */
+    .screens{display:grid; grid-template-columns:2fr 1fr; gap:22px}
+    .shot{position:relative; aspect-ratio:16/9; border-radius:16px; overflow:hidden; border:1px solid rgba(255,255,255,.1)}
+    .shot::before{content:""; position:absolute; inset:0; background:linear-gradient(135deg, rgba(0,229,255,.15), rgba(127,255,212,.1)); opacity:.6}
+    .shot span{position:absolute; inset:auto 10px 10px auto; background:rgba(10,26,43,.7); padding:.3rem .6rem; border-radius:8px; border:1px solid rgba(255,255,255,.12); font-size:.8rem}
+    .thumbs{display:grid; grid-template-columns:1fr; gap:22px}
+
+    /* Download */
+    .downloads{display:grid; grid-template-columns:repeat(3,1fr); gap:22px}
+    .dl{padding:22px}
+    .dl .meta{display:flex; gap:.6rem; flex-wrap:wrap; color:var(--muted); font-size:.95rem}
+
+    /* Instalação */
+    pre{background:#07131f; color:#e6f0ff; padding:16px; border-radius:14px; overflow:auto; border:1px solid rgba(255,255,255,.08)}
+
+    /* Docs / Comunidade */
+    .list{display:grid; grid-template-columns:repeat(3,1fr); gap:22px}
+    .list a{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:16px; border:1px solid rgba(255,255,255,.1); border-radius:14px; background:rgba(255,255,255,.04)}
+
+    /* FAQ */
+    details{border:1px solid rgba(255,255,255,.1); border-radius:14px; padding:14px 16px; background:rgba(255,255,255,.04)}
+    details+details{margin-top:12px}
+    summary{font-weight:700; cursor:pointer}
+
+    /* Roadmap */
+    .road{display:grid; grid-template-columns:1fr 1fr; gap:22px}
+    .milestone{padding:18px}
+    .milestone .when{color:var(--muted); font-size:.9rem}
+
+    /* Rodapé */
+    footer{padding:56px 0 40px; color:var(--muted)}
+    .foot{display:flex; flex-wrap:wrap; gap:22px; align-items:center; justify-content:space-between}
+
+    /* Utilidades */
+    .hide{display:none}
+    .row{display:flex; align-items:center; gap:12px; flex-wrap:wrap}
+
+    /* Responsivo */
+    @media (max-width: 960px){
+      .hero-grid{grid-template-columns:1fr}
+      .grid-3, .editions, .downloads, .list{grid-template-columns:1fr 1fr}
+      .screens{grid-template-columns:1fr}
+      .thumbs{grid-template-columns:1fr 1fr}
+      .road{grid-template-columns:1fr}
+    }
+    @media (max-width: 640px){
+      nav ul{display:none}
+      .grid-3, .editions, .downloads, .list{grid-template-columns:1fr}
+    }
+
+    /* Botão topo */
+    #topBtn{position:fixed; right:16px; bottom:16px; z-index:60; opacity:0; transform:translateY(10px); transition:all .25s ease}
+    #topBtn.show{opacity:1; transform:none}
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Fly Linux",
+    "applicationCategory": "OperatingSystem",
+    "operatingSystem": "Linux",
+    "offers": {"@type":"Offer","price":"0","priceCurrency":"BRL"},
+    "description": "Distribuição Linux com foco em desempenho, segurança e simplicidade.",
+    "softwareVersion": "1.0",
+    "url": "https://flylinux.com.br"
+  }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#home" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden">Pular para o conteúdo</a>
+  <header>
+    <div class="container nav">
+      <div class="brand" aria-label="Fly Linux">
+        <svg width="32" height="32" viewBox="0 0 64 64" role="img" aria-hidden="true"><path d="M10 34l20-6 8-18 6 16 10 4-20 6-8 18-6-16z" fill="var(--accent)"/></svg>
+   
+      </div>
+      <nav aria-label="Principal">
+        <ul id="menu">
+          <li><a href="#home">Início</a></li>
+          <li><a href="#features">Recursos</a></li>
+          <li><a href="#editions">Edições</a></li>
+          <li><a href="#screens">Screenshots</a></li>
+          <li><a href="#download">Download</a></li>
+          <li><a href="#install">Instalação</a></li>
+          <li><a href="#docs">Documentação</a></li>
+          <li><a href="#community">Comunidade</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#roadmap">Roadmap</a></li>
+        </ul>
+      </nav>
+      <button id="menuBtn" class="btn btn-ghost" aria-label="Abrir menu" onclick="toggleMenu()">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" /></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section id="home" class="hero container">
+      <div class="hero-grid">
+        <div>
+          <div class="badge-row">
+            <span class="chip">Open Source</span>
+            <span class="chip">Leve e rápida</span>
+            <span class="chip">Segura por padrão</span>
+          </div>
+          <h1>Fly Linux — voando leve, rápido e seguro</h1>
+          <p class="lead">Uma distribuição Linux pensada para quem quer desempenho, estabilidade e uma experiência moderna em uma única ISO.</p>
+          <div class="row" style="margin:14px 0 22px">
+            <a class="btn btn-primary" href="#download">Baixar agora</a>
+            <a class="btn" href="#docs">Ler documentação</a>
+          </div>
+          <div class="specs">
+            <div class="spec"><strong>CPU:</strong> x86_64 (64‑bit)</div>
+            <div class="spec"><strong>RAM mínima:</strong> 2 GB</div>
+            <div class="spec"><strong>Armazenamento:</strong> 20 GB</div>
+          </div>
+        </div>
+        <div class="panel card">
+          <div class="row" style="justify-content:space-between">
+            <span>Última versão</span>
+            <strong>1.0 (LTS)</strong>
+          </div>
+          <div style="margin-top:12px;color:var(--muted)">Notas rápidas</div>
+          <ul style="margin:6px 0 0 18px;color:var(--muted)">
+            <li>Kernel Linux atualizado</li>
+            <li>Ambiente gráfico moderno (edição Workstation)</li>
+            <li>ISO Live com instalador simples</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- RECURSOS -->
+    <section id="features">
+      <div class="container">
+        <h2 class="section-title">Recursos</h2>
+        <p class="section-sub">Tudo que você precisa para decolar com produtividade e segurança.</p>
+        <div class="grid-3">
+          <article class="feature card">
+            <div class="row">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              <h3>Instalação simples</h3>
+            </div>
+            <p>ISO Live com assistente gráfico e modo avançado para usuários experientes.</p>
+          </article>
+          <article class="feature card">
+            <div class="row">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.59 13.41A2 2 0 0 1 20 14.83V19a2 2 0 0 1-2 2h-3.17a2 2 0 0 1-1.41-.59L3 10l7-7 10.59 10.59z"/><line x1="7" y1="7" x2="7" y2="7"/></svg>
+              <h3>Desempenho</h3>
+            </div>
+            <p>Inicialização rápida e serviços otimizados. Perfeito para desktops e notebooks.</p>
+          </article>
+          <article class="feature card">
+            <div class="row">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <h3>Segurança por padrão</h3>
+            </div>
+            <p>Configurações sensatas de firewall e atualizações fáceis para manter seu sistema protegido.</p>
+          </article>
+          <article class="feature card">
+            <div class="row">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <h3>Atualizações contínuas</h3>
+            </div>
+            <p>Repositórios estáveis com atualizações regulares e previsíveis.</p>
+          </article>
+          <article class="feature card">
+            <div class="row">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+              <h3>Ambientes gráficos</h3>
+            </div>
+            <p>Escolha entre Workstation (GUI), Server (headless) e Minimal conforme sua necessidade.</p>
+          </article>
+          <article class="feature card">
+            <div class="row">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              <h3>Comunidade</h3>
+            </div>
+            <p>Fórum e canais de chat para suporte, tutoriais e contribuições.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDIÇÕES -->
+    <section id="editions">
+      <div class="container">
+        <h2 class="section-title">Edições</h2>
+        <p class="section-sub">Três sabores, uma experiência consistente.</p>
+        <div class="editions">
+          <div class="edition card">
+            <div class="row"><strong>Workstation</strong><span class="chip">Desktop</span></div>
+            <p>Para uso diário com interface gráfica moderna e aplicativos essenciais pré‑instalados.</p>
+            <ul>
+              <li>Drivers e codecs populares</li>
+              <li>Produtividade, navegador e ferramentas de sistema</li>
+              <li>Escolha de ambientes (ex.: GNOME/KDE)</li>
+            </ul>
+          </div>
+          <div class="edition card">
+            <div class="row"><strong>Server</strong><span class="chip">Headless</span></div>
+            <p>Enxuta e estável para servidores, containers e VMs. Sem interface gráfica.</p>
+            <ul>
+              <li>Segurança fortalecida por padrão</li>
+              <li>Serviços essenciais e ferramentas CLI</li>
+              <li>Imagens minimalistas</li>
+            </ul>
+          </div>
+          <div class="edition card">
+            <div class="row"><strong>Minimal</strong><span class="chip">DIY</span></div>
+            <p>Base mínima para você montar o sistema do seu jeito.</p>
+            <ul>
+              <li>Boot rápido e footprint reduzido</li>
+              <li>Perfeito para PCs mais antigos</li>
+              <li>Você escolhe os pacotes</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREENSHOTS -->
+    <section id="screens">
+      <div class="container">
+        <h2 class="section-title">Screenshots</h2>
+        <p class="section-sub">Um gostinho do que você verá na Workstation.</p>
+        <div class="screens">
+          <figure class="shot card" aria-label="Área de trabalho">
+            <img alt="Área de trabalho Fly Linux" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1280 720'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%2300e5ff' offset='0'/%3E%3Cstop stop-color='%237fffd4' offset='1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='1280' height='720' fill='%230a1a2b'/%3E%3Ccircle cx='1080' cy='140' r='220' fill='url(%23g)' opacity='.25'/%3E%3Crect x='80' y='560' width='1120' height='56' rx='12' fill='%23ffffff' opacity='.06'/%3E%3Ctext x='640' y='380' fill='%23e6f0ff' font-family='Arial,Helvetica,sans-serif' font-size='48' text-anchor='middle'%3EDesktop Fly Linux%3C/text%3E%3C/svg%3E" style="width:100%;height:100%;object-fit:cover"/>
+            <span>Desktop</span>
+          </figure>
+          <div class="thumbs">
+            <figure class="shot card" aria-label="Menu de aplicativos">
+              <img alt="Menu de aplicativos Fly Linux" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1280 720'%3E%3Crect width='1280' height='720' fill='%230a1a2b'/%3E%3Crect x='160' y='120' width='320' height='480' rx='20' fill='%23ffffff' opacity='.06'/%3E%3Cg fill='%23e6f0ff' opacity='.8'%3E%3Crect x='200' y='160' width='240' height='40' rx='8'/%3E%3Crect x='200' y='220' width='240' height='40' rx='8'/%3E%3Crect x='200' y='280' width='240' height='40' rx='8'/%3E%3Crect x='200' y='340' width='240' height='40' rx='8'/%3E%3C/g%3E%3C/svg%3E" style="width:100%;height:100%;object-fit:cover"/>
+              <span>Aplicativos</span>
+            </figure>
+            <figure class="shot card" aria-label="Configurações do sistema">
+              <img alt="Configurações do Fly Linux" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1280 720'%3E%3Crect width='1280' height='720' fill='%230a1a2b'/%3E%3Crect x='200' y='120' width='880' height='480' rx='16' fill='%23ffffff' opacity='.06'/%3E%3Ccircle cx='280' cy='200' r='24' fill='%2300e5ff'/%3E%3Ccircle cx='340' cy='200' r='24' fill='%237fffd4'/%3E%3C/svg%3E" style="width:100%;height:100%;object-fit:cover"/>
+              <span>Configurações</span>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOWNLOAD -->
+    <section id="download">
+      <div class="container">
+        <h2 class="section-title">Download</h2>
+        <p class="section-sub">Escolha sua edição e arquitetura.</p>
+        <div class="downloads">
+          <div class="dl card">
+            <div class="row" style="justify-content:space-between"><strong>Workstation x86_64</strong><span class="chip">ISO ~2.4 GB</span></div>
+            <p>Interface gráfica pronta para uso.</p>
+            <div class="meta"><span>SHA256: <code>abc123…</code></span><span>Data: 2025‑09‑04</span></div>
+            <div class="row" style="margin-top:10px">
+              <a class="btn btn-primary" href="#">Baixar</a>
+              <a class="btn" href="#">Torrent</a>
+            </div>
+          </div>
+          <div class="dl card">
+            <div class="row" style="justify-content:space-between"><strong>Server x86_64</strong><span class="chip">ISO ~1.1 GB</span></div>
+            <p>Para servidores e VMs. Sem GUI.</p>
+            <div class="meta"><span>SHA256: <code>def456…</code></span><span>Data: 2025‑09‑04</span></div>
+            <div class="row" style="margin-top:10px">
+              <a class="btn btn-primary" href="#">Baixar</a>
+              <a class="btn" href="#">Torrent</a>
+            </div>
+          </div>
+          <div class="dl card">
+            <div class="row" style="justify-content:space-between"><strong>Minimal x86_64</strong><span class="chip">ISO ~800 MB</span></div>
+            <p>Base mínima para montar seu sistema.</p>
+            <div class="meta"><span>SHA256: <code>ghi789…</code></span><span>Data: 2025‑09‑04</span></div>
+            <div class="row" style="margin-top:10px">
+              <a class="btn btn-primary" href="#">Baixar</a>
+              <a class="btn" href="#">Torrent</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INSTALAÇÃO -->
+    <section id="install">
+      <div class="container">
+        <h2 class="section-title">Instalação</h2>
+        <p class="section-sub">Crie um pendrive bootável e siga o instalador.</p>
+        <div class="grid-3">
+          <div class="card" style="padding:18px">
+            <h3>Linux (dd)</h3>
+            <pre><code># Substitua /dev/sdX pelo seu dispositivo
+echo "ATENÇÃO: isso apaga o pendrive." 
+sudo dd if=FlyLinux-Workstation-x86_64.iso of=/dev/sdX bs=4M status=progress conv=fsync</code></pre>
+          </div>
+          <div class="card" style="padding:18px">
+            <h3>Windows (Rufus)</h3>
+            <ol>
+              <li>Baixe a ISO do Fly Linux</li>
+              <li>Abra o Rufus e selecione seu pendrive</li>
+              <li>Escolha a ISO e clique em <em>Start</em></li>
+            </ol>
+          </div>
+          <div class="card" style="padding:18px">
+            <h3>Alternativa (Ventoy)</h3>
+            <ol>
+              <li>Instale o Ventoy no pendrive</li>
+              <li>Copie a ISO do Fly Linux para o pendrive</li>
+              <li>Inicie o PC pelo pendrive e selecione a ISO</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOCUMENTAÇÃO -->
+    <section id="docs">
+      <div class="container">
+        <h2 class="section-title">Documentação</h2>
+        <p class="section-sub">Guia rápido para começar e recursos para avançar.</p>
+        <div class="list">
+          <a href="#" aria-label="Guia de primeiros passos">Guia de primeiros passos <span>→</span></a>
+          <a href="#" aria-label="Notas de versão">Notas de versão <span>→</span></a>
+          <a href="#" aria-label="Contribua com o projeto">Contribua com o projeto <span>→</span></a>
+          <a href="#" aria-label="Relatar um bug">Relatar um bug <span>→</span></a>
+          <a href="#" aria-label="Política de segurança">Política de segurança <span>→</span></a>
+          <a href="#" aria-label="FAQ completa">FAQ completa <span>→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMUNIDADE -->
+    <section id="community">
+      <div class="container">
+        <h2 class="section-title">Comunidade</h2>
+        <p class="section-sub">Participe dos nossos canais e ajude a construir o Fly Linux.</p>
+        <div class="list">
+          <a href="#" aria-label="Fórum">Fórum (Discourse) <span>→</span></a>
+          <a href="#" aria-label="Chat Matrix">Chat (Matrix) <span>→</span></a>
+          <a href="#" aria-label="Telegram">Telegram <span>→</span></a>
+        </div>
+        <div class="card" style="padding:18px; margin-top:22px">
+          <strong>Contato direto:</strong> <a href="mailto:contato@flylinux.example">contato@flylinux.example</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <div class="container">
+        <h2 class="section-title">Perguntas frequentes</h2>
+        <details>
+          <summary>O Fly Linux é gratuito?</summary>
+          <p>Sim. O sistema é livre e gratuito. Você pode baixar, usar e redistribuir seguindo as licenças aplicáveis.</p>
+        </details>
+        <details>
+          <summary>Quais arquiteturas são suportadas?</summary>
+          <p>Atualmente, x86_64 (64‑bit). Outras arquiteturas podem ser consideradas conforme a demanda.</p>
+        </details>
+        <details>
+          <summary>Como colaborar com o projeto?</summary>
+          <p>Participe no fórum, relate problemas, envie sugestões e contribua com documentação e código.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- ROADMAP -->
+    <section id="roadmap">
+      <div class="container">
+        <h2 class="section-title">Roadmap</h2>
+        <p class="section-sub">Planejamento das próximas versões (sujeito a mudanças).</p>
+        <div class="road">
+          <div class="milestone card">
+            <div class="row" style="justify-content:space-between"><strong>1.0 LTS</strong><span class="when">Q3 2025</span></div>
+            <ul>
+              <li>ISO Live + instalador</li>
+              <li>Edições Workstation, Server e Minimal</li>
+              <li>Repositórios estáveis</li>
+            </ul>
+          </div>
+          <div class="milestone card">
+            <div class="row" style="justify-content:space-between"><strong>1.1</strong><span class="when">Q4 2025</span></div>
+            <ul>
+              <li>Ferramenta de pós‑instalação</li>
+              <li>Melhorias de hardware/energia</li>
+              <li>Traduções e acessibilidade</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container foot">
+      <div class="row">
+        <svg width="22" height="22" viewBox="0 0 64 64" aria-hidden="true"><path d="M10 34l20-6 8-18 6 16 10 4-20 6-8 18-6-16z" fill="var(--accent)"/></svg>
+        <span>© <span id="year"></span> Fly Linux. Conteúdo do site sob CC BY 4.0.</span>
+      </div>
+      <div class="row">
+        <a href="#home">Topo</a>
+        <span>·</span>
+        <a href="#docs">Docs</a>
+        <span>·</span>
+        <a href="#community">Comunidade</a>
+      </div>
+    </div>
+  </footer>
+
+  <button id="topBtn" class="btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Voltar ao topo">↑</button>
+
+  <script>
+    // ano
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // menu móvel
+    function toggleMenu(){
+      const ul = document.getElementById('menu');
+      const style = getComputedStyle(ul);
+      if(style.display === 'none'){ ul.style.display = 'flex'; ul.style.flexDirection='column'; } else { ul.style.display = ''; }
+    }
+
+    // link ativo conforme rolagem
+    const sections = ['home','features','editions','screens','download','install','docs','community','faq','roadmap'];
+    const links = Array.from(document.querySelectorAll('nav a'));
+
+    function onScroll(){
+      const scroll = window.scrollY + 100;
+      let current = 'home';
+      sections.forEach(id => {
+        const el = document.getElementById(id);
+        if(el && el.offsetTop <= scroll) current = id;
+      });
+      links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current));
+      // botão topo
+      const topBtn = document.getElementById('topBtn');
+      if(window.scrollY > 400){ topBtn.classList.add('show'); } else { topBtn.classList.remove('show'); }
+    }
+    window.addEventListener('scroll', onScroll);
+    onScroll();
+  </script>
+</body>
+</html>
